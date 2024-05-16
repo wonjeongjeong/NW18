@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8">
+        <link rel="stylesheet" href="../css/note.css">
+    </head>
+    <body>
+        <form class="container" action="http://localhost:3000/create" method="post">
+            <header>
+                <h1>MEMO</h1>
+            </header>
+            <div class="slogan">
+                NOTE YOUR DAY
+            </div>
+
+            <div class="user-input-container">
+                <div class="user-input">
+                    <input type="text" placeholder="제목을 입력하세요" class="title" name="title">
+                </div>
+
+                <div class="user-input">
+                    <input type="text" placeholder="부제를 입력하세요" class="description" name="description">
+                </div>
+
+                <div class="user-input user-input-content">
+                    <span>메모</span>
+                    <textarea placeholder="내용을 입력하세요" class="content" name="content"></textarea>
+                </div>    
+            </div>
+
+            <div class="button-wrapper">
+                <a href="/">
+                    <button class="back-btn" type="button">이전으로</button>
+                </a>
+                <button class="save-btn" type="submit">저장</button>
+                <button class="modify-btn" type="button">수정</button>
+            </div>
+        </div>
+        <script src="../js/note.js"></script>
+    </body>
+</html>

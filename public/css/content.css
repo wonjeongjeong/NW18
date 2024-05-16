@@ -1,0 +1,31 @@
+* { /*기본적으로 요소들은 여백을 가지고 있음*/
+    padding:0;
+    margin:0;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.container{
+    width:800px;
+    margin:0 auto;
+}
+header{
+    padding-top:20px;
+    padding-bottom:20px;
+}
+.memo-container{
+    margin-top:100px;
+}
+.title{
+    font-size:30px;
+}
+.descirption{
+    font-size:20px
+}
+.createdAt{
+    text-align: right;
+}
+.content{
+    margin-top:50px
+}

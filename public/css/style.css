@@ -1,0 +1,61 @@
+* { /*기본적으로 요소들은 여백을 가지고 있음*/
+    padding:0;
+    margin:0;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.container{
+    width:800px;
+    margin:0 auto;
+}
+header{
+    padding-top:20px;
+    padding-bottom:20px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header > h1 {
+    font-weight:900;
+}
+header > a {
+    border:1px solid black;
+    padding-left:15px;
+    padding-right:15px;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+ul {
+    margin-top:100px;
+    list-style:none;
+}
+ul > li{
+    margin-bottom:30px;
+    padding-bottom:30px;
+    border-bottom: 1px solid #d9d9d9;
+}
+ul > li > .list-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ul > li > .list-header > a > h1{
+    font-size:26px;
+    cursor: pointer;
+}
+
+ul > li > .list-header > div > span{
+    font-size: 14px;
+    display: inline-block;
+    margin-left: 7px;
+    cursor: pointer;
+}
+.description{
+    font-size:20px;
+    margin-top:14px;
+}
+.createdAt{
+    text-align: right; /* 오른쪽으로 정렬 */
+}

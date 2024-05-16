@@ -1,0 +1,80 @@
+* { /*기본적으로 요소들은 여백을 가지고 있음*/
+    padding:0;
+    margin:0;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.container{
+    width:800px;
+    margin:0 auto;
+}
+header{
+    padding-top:20px;
+    padding-bottom:20px;
+}
+.slogan{
+    background-color:#e6abff;
+    padding-top:20px;
+    padding-bottom:20px;
+    text-align: center;
+    color: black;
+    margin-top:40px;
+    font-size:30px;
+    font-weight:900;
+}
+
+.user-input-container{
+    margin-top:40px;
+}
+.user-input{
+    display: flex;
+    flex-direction: column;
+}
+.user-input > input{
+    margin-bottom:20px;
+    padding-top:10px;
+    padding-bottom:10px;
+    outline-style: none;
+    border: none;
+    border-bottom:1px solid #d9d9d9;
+}
+.user-input > span{
+    display: inline-block;
+    height:30px;
+}
+.user-input > textarea{
+    resize: none;
+    height:200px;
+}
+.user-input.user-input-content{
+    margin-top:30px;
+}
+.button-wrapper{
+    margin-top:20px;
+    display:flex;
+    justify-content: flex-end;
+    gap:15px;
+}
+.button-wrapper > button{
+    border:1px solid black;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:15px;
+    padding-right:15px;
+    border-radius:4px;
+    background-color:white;
+}
+.button-wrapper > a > button{
+    border:1px solid black;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:15px;
+    padding-right:15px;
+    border-radius:4px;
+    background-color:white;
+}
+.save-btn, .modify-btn{
+    background-color:#e6abff !important; /* !important : 앞에서 정의했던 것보다 이걸 먼저 정의한다. */
+}
