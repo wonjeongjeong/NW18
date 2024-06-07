@@ -8,7 +8,7 @@ function getData() {  // localStorage 에서 데이터 받아오는 함수
             data = saveData[i];
         };
     }
-    fetch("http://localhost:3000/list/" + id, {
+    fetch("http://112.152.254.75:3000/list/" + id, {
         method: "get",
     })
     .then(function (result) {

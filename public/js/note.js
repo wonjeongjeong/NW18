@@ -23,7 +23,7 @@ modifyButton.addEventListener("click", function (event) {   // 수정 버튼 눌
     // localStorage.setItem("memo", JSON.stringify(saveData));  // localStorage에 수정한 saveData 저장
     
     // window.location.href = "/";   // 목록으로 되돌아감
-    fetch("http://localhost:3000/modify", {
+    fetch("http://112.152.254.75:3000/modify", {
         method: "put",
         headers: {
             "content-type": "application/json",
@@ -85,7 +85,7 @@ function renderPage(){    // 쿼리스트링값이 create mode냐 modify mode냐
     }else if(qs.mode === "modify"){
         createButton.style.display = "none";
         modifyButton.style.display = "block";
-        fetch("http://localhost:3000/list/" + qs.id, {
+        fetch("http://112.152.254.75:3000/list/" + qs.id, {
             method: "get",
         })
         .then(function (result) {
