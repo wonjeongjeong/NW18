@@ -1,5 +1,5 @@
 const express = require("express");
-const conn = require("./core/database");
+const conn = require("./core/database.js");
 const app = express();
 
 app.use(express.static(__dirname + "/public"));
@@ -42,16 +42,35 @@ app.get("/list/:id", function(request, response) { // *는 모든 필드를 의�
     });
 });
 
-app.post("/create", function (request, response) {
-    conn.query("INSERT INTO list (title, description, content, createdAt) VALUES (?,?,?,now())", [request.body.title, request.body.description, request.body.content], function(err, result) {
-        if(err){
-            console.log(err);
-            response.status(500).json({ message: "에러가 일어났습니다", status: "fail" });  //서버에서 에러났음을 알리는 숫자
-        }
-        response.redirect("/");
+// app.post("/create", function (request, response) {
+//     conn.query("INSERT INTO list (title, description, content, createdAt) VALUES (?,?,?,?)", [request.body.title, request.body.description, request.body.content, createdAt], function(err, result) {
+//         if(err){
+//             console.log(err);
+//             response.status(500).json({ message: "에러가 일어났습니다", status: "fail" });  //서버에서 에러났음을 알리는 숫자
+//         }
+//         response.redirect("/");
+//
+//     });
+// });
 
-    });
+app.post("/create", function(request, response) {
+    const { title, description, content } = request.body;
+    const createdAt = new Date().toISOString().slice(0, 19).replace('T', ' '); // MySQL DATETIME 형식에 맞게 변환
+
+    conn.query("INSERT INTO list (title, description, content, createdAt) VALUES (?, ?, ?, ?)",
+        [title, description, content, createdAt],
+        function(err, result) {
+            if (err) {
+                console.log(err);
+                response.status(500).json({ message: "에러가 일어났습니다", status: "fail" });
+                return;
+            }
+            console.log('Data inserted:', result);
+            response.redirect("/");
+        });
 });
+
+
 
 app.put("/modify",function(request, response) {
     const data = request.body;

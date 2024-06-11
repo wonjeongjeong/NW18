@@ -111,10 +111,18 @@ function drawMemo(memo) {  // 맨 위의 주석을 참고하여 필요한 메모
     div.className = "createdAt";
 
     const span = document.createElement("span");
+    span.className= "createDateTime";
     console.log(memo);
-    const now = new Date(memo.createAt);
+    // const now = new Date(memo);
+    //
+    // //유효한 날짜인지 검사
+    // if (!isNaN(now)) {
+    //     span.textContent = now.toISOString();
+    // } else {
+    //     span.textContent = "Invalid Date";
+    // }
 
-    span.textContent = now.toLocaleDateString();
+    span.textContent = memo.createdAt;
 
     div.appendChild(span);
 

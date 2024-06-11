@@ -33,13 +33,14 @@ function getQueryString() {  // ?id=1  과 같은 ?이후의 주소값을 받아
 function renderData(memo) {   // id값에 따라 달라지는 메모 내용을 표시하기 위한 함수
     const title =  document.querySelector(".title");
     const description = document.querySelector(".description");
-    const createdAt = document.querySelector(".createdAt > span");
+    const createdAt = document.querySelector(".createDateTime");
     const content = document.querySelector(".content");
 
-    const now = new Date(memo.createAt);
+    const now = new Date(memo);
     title.textContent = memo.title;
     description.textContent = memo.description;
-    createdAt.textContent = now.toLocaleDateString();
+    createdAt.textContent = now.toISOString();
     content.textContent = memo.content;
+
 }
 getData();
