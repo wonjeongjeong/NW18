@@ -1,10 +1,10 @@
 const express = require("express");
 const conn = require("./core/database");
-const webSocket = require('ws');
+
 const app = express();
 
 const server = require('http').createServer(app);
-const wss = new webSocket.Server({ server });
+
 
 app.use(express.static(__dirname + "/public"));
   // static : html, css, js같이 바뀌지 않는 정적 파일
@@ -12,15 +12,6 @@ app.use(express.static(__dirname + "/public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-wss.on('connection', ws => {
-    console.log('Client connected');
-    ws.on('message', message => {
-        console.log(`Received message => ${message}`);
-    });
-    ws.on('close', () => {
-        console.log('Client disconnected');
-    });
-});
 
 app.get("/", function(request, response){
     response.sendFile(__dirname + "/public/index.html");
@@ -58,20 +49,14 @@ app.get("/list/:id", function(request, response) { // *는 모든 필드를 의�
 
 app.post("/create", function (request, response) {
     const { title, description, content } = request.body;
-    conn.query("INSERT INTO list (title, description, content, createdAt) VALUES (?,?,?,now())", [request.body.title, request.body.description, request.body.content], function(err, result) {
+    conn.query("INSERT INTO list (title, description, content, createdAt) VALUES (?,?,?,now())" [request.body.title, request.body.description, request.body.content], function(err, result) {
         if(err){
             console.log(err);
             response.status(500).json({ message: "에러가 일어났습니다", status: "fail" });  //서버에서 에러났음을 알리는 숫자
         }
 
-        wss.clients.forEach(client => {
-            if (client.readyState === webSocket.OPEN) {
-                client.send(JSON.stringify({ message: "새 게시글이 등록되었습니다!", post: { title, description, content } }));
-                console.log("WebSocket message sent : 새 게시글이 등록되었습니다 !");
-            }
-        });
-        return response.status(200).json({ message: "게시글이 작성되었습니다", status: "success" });
-        //response.redirect("/");
+
+        response.redirect("/");
 
     });
 });

@@ -1,8 +1,6 @@
 const createButton = document.querySelector(".save-btn");  // 저장 버튼
 const modifyButton = document.querySelector(".modify-btn");  // 수정 버튼
 
-const socket = new WebSocket('ws://localhost:3000');
-
 modifyButton.addEventListener("click", function (event) {   // 수정 버튼 눌렀을 때 
     // const data = getData();
     const qs = getQueryString();
@@ -48,60 +46,6 @@ modifyButton.addEventListener("click", function (event) {   // 수정 버튼 눌
     });
 });
 
-createButton.addEventListener("click", function(event) {
-    event.preventDefault();
-    const title = document.querySelector(".title").value;
-    const description = document.querySelector(".description").value;
-    const content = document.querySelector(".content").value;
-
-    fetch("http://localhost:3000/create", {
-        method: "post",
-        headers: {
-            "content-type": "application/json",
-        },
-        body: JSON.stringify({
-            title: title,
-            description: description,
-            content: content,
-        }),
-    })
-        .then(function(response) {
-            if (response.redirected) {
-                window.location.href = response.url;
-            } else {
-                return response.json();
-            }
-        })
-        .then(function(data) {
-            if (data.status === "success") {
-                alert(data.message);
-                window.location.href = "/";
-            }
-            else {
-                alert("게시글 작성 중 오류가 발생했습니다: " + data.message);
-            }
-        })
-        .catch(function(error) {
-            console.error(error);
-            alert("게시글 작성 중 오류가 발생했습니다.");
-        });
-});
-socket.onopen = function(event) {
-    console.log("WebSocket connection established");
-};
-
-socket.onmessage = function(event) {
-    const data = JSON.parse(event.data);
-    alert(data.message); // 서버로부터 받은 메시지를 alert로 표시
-};
-
-socket.onclose = function(event) {
-    console.log("WebSocket connection closed");
-};
-
-socket.onerror = function(error) {
-    console.error("WebSocket error observed:", error);
-};
 // createButton.addEventListener("click", function (event) {  // 버튼을 누를 때 (click) 생기는 이벤트 함수
 //     const title = document.querySelector(".title");
 //     const description = document.querySelector(".description");
