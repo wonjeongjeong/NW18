@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="963595c9-caec-4681-95e1-ce0fe852cf18" name="LikeLion-12th">
+        <fileTransfer accessType="SFTP" host="54.180.187.44" port="22" sshConfigId="ba85c8f5-ec2d-472f-90ef-79a513394146" sshConfig="ubuntu@54.180.187.44:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
