@@ -37,7 +37,7 @@ app.get("/content", function(request, response) {
 });
 
 app.get("/lists", function(request, response) {
-    conn.query("SELECT id, title, description, content, createAt FROM list ORDER BY id DESC", function(err, result) {
+    conn.query("SELECT id, title, description, content, createdAt FROM list ORDER BY id DESC", function(err, result) {
         if(err){
             console.log(err);
             response.status(500).json({ message: "데이터를 읽어오지 못했습니다", status: "fail" });  //데이터를 읽어오지 못했음을 알리는 숫자
@@ -58,7 +58,7 @@ app.get("/list/:id", function(request, response) { // *는 모든 필드를 의�
 
 app.post("/create", function (request, response) {
     const { title, description, content } = request.body;
-    conn.query("INSERT INTO list (title, description, content, createAt) VALUES (?,?,?,now())", [request.body.title, request.body.description, request.body.content], function(err, result) {
+    conn.query("INSERT INTO list (title, description, content, createdAt) VALUES (?,?,?,now())", [request.body.title, request.body.description, request.body.content], function(err, result) {
         if(err){
             console.log(err);
             response.status(500).json({ message: "에러가 일어났습니다", status: "fail" });  //서버에서 에러났음을 알리는 숫자

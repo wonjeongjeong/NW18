@@ -17,7 +17,7 @@
 
 function getData(){ // localStorage 에서 데이터 받아오는 함수
     // const saveData = JSON.parse(localStorage.getItem("memo"));
-    fetch("http://localhost:3000/lists", {
+    fetch("http://112.152.254.75:3000/lists", {
         method: "get",
     }).then(function(result) {
         return result.json();
@@ -80,7 +80,7 @@ function drawMemo(memo) {  // 맨 위의 주석을 참고하여 필요한 메모
         //     }
         // }
         // getData();
-        fetch("http://localhost:3000/delete", {
+        fetch("http://112.152.254.75:3000/delete", {
             method: "delete",
             headers:{
                 "content-type": "application/json",
